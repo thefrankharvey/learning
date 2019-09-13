@@ -103,29 +103,49 @@ function avgScores(obj){
 // *  
 // *  3) If time permits, consider adding additional test cases.
 
-function longestUniformSubstring(input){
-  const inputLen = input.length
-  let startIndex = 0;
-  let maxCount = 0;
-  let currentStart, currentCount, prevChar;
-  
-  for(let i = 0; i < inputLen; i++){
-    if(input.charAt(i) !== prevChar){
-      prevChar = input.charAt(i);
-      currentStart = i;
-      currentCount = 1;
-    } else {
-      currentCount++
-    }
-    if(currentCount > maxCount){
-      startIndex = currentStart;
-      maxCount = currentCount;
-    }
+// function longestUniformSubstring(input){
+//   const inputLen = input.length
+//   let startIndex = 0;
+//   let maxCount = 0;
+//   let currentStart, currentCount, prevChar;
+// 
+//   for(let i = 0; i < inputLen; i++){
+//     if(input.charAt(i) !== prevChar){
+//       prevChar = input.charAt(i);
+//       currentStart = i;
+//       currentCount = 1;
+//     } else {
+//       currentCount++
+//     }
+//     if(currentCount > maxCount){
+//       startIndex = currentStart;
+//       maxCount = currentCount;
+//     }
+//   }
+//   return [ startIndex, maxCount ];
+// }
+// 
+// longestUniformSubstring('abbbccda')
+
+
+const cities = ['NYC', 'Paris', 'London', 'Berlin']
+const newObj = {}
+
+function test(x){
+  for(let i = 0; i < x.length; i++){
+    newObj[i] ? null : newObj[i] = x[i];
   }
-  return [ startIndex, maxCount ];
+  console.log(newObj);
 }
 
-longestUniformSubstring('abbbccda')
+test(cities)
+
+
+
+
+
+
+
 
 
 
