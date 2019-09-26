@@ -128,18 +128,38 @@ function avgScores(obj){
 // longestUniformSubstring('abbbccda')
 
 
-const cities = ['NYC', 'Paris', 'London', 'Berlin']
-const newObj = {}
+// const cities = ['NYC', 'Paris', 'London', 'Berlin']
+// const newObj = {}
+// 
+// function test(x){
+//   for(let i = 0; i < x.length; i++){
+//     newObj[i] ? null : newObj[i] = x[i];
+//   }
+//   console.log(newObj);
+// }
+// 
+// test(cities)
+// 
 
-function test(x){
-  for(let i = 0; i < x.length; i++){
-    newObj[i] ? null : newObj[i] = x[i];
-  }
-  console.log(newObj);
+function luckyNumbers(num1, num2){
+    for(let i = num1; i <= num2; i++){
+      let thing = i.toString().split('')
+      // const test = thing.reduce((a,b) => parseInt(a) + parseInt(b), 0)
+      console.log(thing);
+      for(let j = 0; j <= thing.length; j++){
+        //console.log(thing.charAt(j))
+        //console.log(thing[j]);
+        // if(thing.charAt(j) !== prevChar){
+        // 
+        // }
+      // if(test === 7){
+      //   console.log(i);
+      // }
+    }
+}
 }
 
-test(cities)
-
+luckyNumbers(100, 200)
 
 
 
