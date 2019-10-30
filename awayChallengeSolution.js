@@ -1,6 +1,3 @@
-// // output (method one)
-// prettyPrintInput(input);
-
 class ShippingLabel {
   constructor(input) {
     this.input = input;
@@ -25,7 +22,6 @@ class ShippingLabel {
   getShipmentsFromInput(input) {
     return input.split("\n").map(line => {
       const valOrPlaceholder = val => (val.trim() === "" ? "N/A" : val);
-
       const [
         number,
         orderNumber,
@@ -45,6 +41,32 @@ class ShippingLabel {
       };
     });
   }
+  
+  findShipment(shipmentNumber){
+    return this.shipments.find((shipmentObj) => shipmentObj.number.trim() === shipmentNumber)
+  }
+  
+  getShipmentTimeline(today, dateShipped){
+      const todayMill = Date.parse(today)
+      const dateShippedMill = Date.parse(dateShipped)
+      const numberOfDays = (todayMill - dateShippedMill) / (1000 * 3600 * 24)
+      return numberOfDays.toFixed(0)
+  }
+  
+  addFullNameAndTime(shipmentNumber, filteredShipments){
+    const todaysDate = new Date;
+    const foundShipment = filteredShipments ? filteredShipments : this.findShipment(shipmentNumber)
+    const shipmentTimline = this.getShipmentTimeline(todaysDate, foundShipment.shipped)
+    foundShipment.fullName = `${foundShipment.firstName} ${foundShipment.lastName}`
+    foundShipment.daysAgoShipped = shipmentTimline
+    return foundShipment;
+  }
+  
+  getOrdersByOrderNumber(orderNumber){
+    const filteredShipments = this.shipments.filter(shipmentObj => shipmentObj.orderNumber == orderNumber)
+    const ordersResult = filteredShipments.map(x => this.addFullNameAndTime(null, x))    
+    return ordersResult
+  }
 }
 
 function run() {
@@ -56,9 +78,7 @@ function run() {
   SH927813,,2018-12-15 09:49:35 -0000,Rebecca,Jones,SH907346`;
 
   const label = new ShippingLabel(input);
-
-  // Method One
-  label.prettyPrintShipments();
+  console.log(label.getOrdersByOrderNumber('O936726'));
 }
 
 run();
