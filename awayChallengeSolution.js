@@ -64,7 +64,7 @@ class ShippingLabel {
   
   getOrdersByOrderNumber(orderNumber){
     const filteredShipments = this.shipments.filter(shipmentObj => shipmentObj.orderNumber == orderNumber)
-    const ordersResult = filteredShipments.map(x => this.addFullNameAndTime(null, x))    
+    const ordersResult = filteredShipments.map(filtedShipment => this.addFullNameAndTime(null, filtedShipment))    
     return ordersResult
   }
 }
