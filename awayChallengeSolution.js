@@ -22,6 +22,7 @@ class ShippingLabel {
   getShipmentsFromInput(input) {
     return input.split("\n").map(line => {
       const valOrPlaceholder = val => (val.trim() === "" ? "N/A" : val);
+      
       const [
         number,
         orderNumber,
@@ -31,7 +32,7 @@ class ShippingLabel {
         parentShipment
       ] = line.split(",").map(val => valOrPlaceholder(val));
 
-      return {
+      const newtest = {
         number,
         orderNumber,
         shipped,
@@ -78,7 +79,7 @@ function run() {
   SH927813,,2018-12-15 09:49:35 -0000,Rebecca,Jones,SH907346`;
 
   const label = new ShippingLabel(input);
-  console.log(label.getOrdersByOrderNumber('O936726'));
+  label.getShipmentsFromInput(input);
 }
 
 run();
